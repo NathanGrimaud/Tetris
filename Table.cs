@@ -8,16 +8,11 @@ namespace Tetris
 {
     class Table
     {
-
         public Barre[] tableau = new Barre[180];
-
-
-
         public Table()
         {
 
         }
-
         public bool Placer (Barre aplacer)
         {
             bool placementvalide = EmplacementDispo(ref aplacer);
@@ -52,7 +47,6 @@ namespace Tetris
                 {
                     tableau[emplacement] = aplacer;
                 }
-
                 return true;  
 
             }
@@ -154,8 +148,7 @@ namespace Tetris
                 else if (tableau[emplacement] == null || tableau[emplacement] == acheck) { }
 
                 else
-                    return false;
-                
+                    return false;                
 
             }
 

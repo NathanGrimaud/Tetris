@@ -5,16 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tetris"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" KeyDown="Window_KeyDown" >
+        Title="MainWindow" Height="480" Width="720" KeyDown="Window_KeyDown" >
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="139*"/>
-            <RowDefinition Height="180*"/>
-        </Grid.RowDefinitions>
-        <Label x:Name="E1" Content="Label" HorizontalAlignment="Left" Margin="134,75,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="E2" Content="Label" HorizontalAlignment="Left" Margin="254,75,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="E3" Content="Label" HorizontalAlignment="Left" Margin="369,75,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="Timer" Content="Label" HorizontalAlignment="Left" Margin="172,138,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        <Label x:Name="Timer" Content="Timer" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Canvas Name="gameGrid" HorizontalAlignment="Left" Height="290" Margin="73,10,0,0" VerticalAlignment="Top" Width="579"/>
 
     </Grid>
 </Window>
