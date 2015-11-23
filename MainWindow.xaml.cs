@@ -22,11 +22,12 @@ namespace Tetris
     public partial class MainWindow : Window
     {       
         Table grille = new Table();
-        Barre test = new Barre();
+        Barre test = new Barre(); // Test est la barre qui sera en cours de placement 
         List<Rectangle> tabRect = new List<Rectangle>();
         public MainWindow()
         {
             InitializeComponent();
+            // Création du timer 
             DispatcherTimer  messageTimer = new DispatcherTimer();
             messageTimer.Tick += new EventHandler(messageTimer_Tick);
             messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
@@ -35,7 +36,8 @@ namespace Tetris
         }
 
         private void messageTimer_Tick(object sender, EventArgs e)
-        {            
+        {    
+            // Tout les ticks, je fait descendre la barre en cours "test"         
             grille.Descendre(ref test);           
             //E1.Content = test.emplacement[0];
             //E2.Content = test.emplacement[1];
@@ -43,9 +45,11 @@ namespace Tetris
             Timer.Content = DateTime.Now.Second;                      
             if (test.bloquer)
             {
+                // Si test est bloqué, car il a touché un autre objet, alors on recréer une barre 
                 test = new Barre();
             }
         }
+        // NathanGrimaud sera aussi prié de commenté son code :p
         public void loadGrid()
         {
             var left = 1;
@@ -72,6 +76,7 @@ namespace Tetris
                 }
             }
         }
+        
         public  void fillGrid()
         {
             tabRect.ForEach(delegate (Rectangle rect) {
@@ -88,6 +93,7 @@ namespace Tetris
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            // Je choppe l'évenement Key, si celui-ci envoie a droite, je balance a droite, si l'user envoie a gauche, je décale a gauche 
             if(e.Key == Key.Right)
             {             
                 grille.Droite(ref test);

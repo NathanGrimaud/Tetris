@@ -11,6 +11,7 @@ namespace Tetris
         public List<int> emplacement = new List<int>() ;
         public bool bloquer;
 
+        
         public Barre()
         {
             emplacement.Add(4);
