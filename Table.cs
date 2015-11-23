@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-    class Table
+    public class Table
     {
         public Barre[] tableau = new Barre[180];
         public Table()
@@ -167,8 +167,46 @@ namespace Tetris
 
         }
 
+        public void checkLigne()
+        {
 
+            for (int i = 17; i > 0; i--)
+            {
+                int j = i*10;
+                bool entier = true;
+                while (j != i*10+9 && entier)
+                {
+                    if(tableau[j] == null)
+                    {
+                        entier = false;
+                    }
 
+                    j++;
+                }
+
+                if (entier)
+                    this.supprimerLigne(i * 10);
+
+            }
+
+        }
+
+        public void supprimerLigne(int j)
+        {
+           for(int i = 0; i <= 9; i++)
+            {
+                this.tableau[j + i] = null;
+            }
+
+            for (int i = j; i >= 0; i--) 
+            {
+                if (this.tableau[i] != null) { 
+                    Barre encours = this.tableau[i];
+                    while (this.Descendre(ref encours));
+                }
+
+            }
+            }
     }
 
 }

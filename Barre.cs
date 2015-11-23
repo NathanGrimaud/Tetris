@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tetris
 {
-    class Barre
+    public class Barre
     {
         public List<int> emplacement = new List<int>() ;
         public bool bloquer;
