@@ -18,13 +18,14 @@ namespace Tetris
         Colors.DarkMagenta, Colors.Goldenrod, Colors.MediumTurquoise,Colors.MediumSlateBlue,
         Colors.PowderBlue,Colors.SandyBrown,Colors.SaddleBrown,Colors.DeepSkyBlue};
         protected static Random r = new Random();
+        protected int position = 0;
 
         public Barre() { }
 
         public static Barre Create()
         {
             var type = r.Next(7);
-            return new BarreL();
+            return new BarreZinv();
             /*
             if (type == 0)
             {
