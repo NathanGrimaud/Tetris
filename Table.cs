@@ -201,7 +201,7 @@ namespace Tetris
                     j++;
                 }
 
-                // Si il n'y a pas eux de trou dans la ligne, je la supprime
+                // Si il n'y a pas eu de trou dans la ligne, je la supprime
                 if (entier) {                   
                     this.supprimerLigne(i * 10);
                     this.checkLigne();

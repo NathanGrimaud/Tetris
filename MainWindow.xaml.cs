@@ -23,37 +23,40 @@ namespace Tetris
     {       
         Table grille = new Table();
         Barre test = new Barre(); // Test est la barre qui sera en cours de placement 
-        List<Rectangle> tabRect = new List<Rectangle>();
+        List<Rectangle> tabRect = new List<Rectangle>(180);
         public MainWindow()
         {
+
             InitializeComponent();
             // Création du timer 
             DispatcherTimer  messageTimer = new DispatcherTimer();
             messageTimer.Tick += new EventHandler(messageTimer_Tick);
-            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 200);
             messageTimer.Start();
             this.loadGrid();
+
         }
 
         private void messageTimer_Tick(object sender, EventArgs e)
         {    
             // Tout les ticks, je fait descendre la barre en cours "test"         
             grille.Descendre(ref test);           
-            //E1.Content = test.emplacement[0];
-            //E2.Content = test.emplacement[1];
-            //E3.Content = test.emplacement[2];
-            Timer.Content = DateTime.Now.Second;                      
+            Timer.Content = DateTime.Now.Second;     
+                             
             if (test.bloquer)
             {
                 // Si test est bloqué, car il a touché un autre objet, alors on recréer une barre 
                 test = new Barre();
             }
+
+            this.fillGrid();
         }
         // NathanGrimaud sera aussi prié de commenté son code :p
         public void loadGrid()
         {
             var left = 1;
             var top = 1;
+
             for (int i = 1; i < 181; i++)
             {
                 var rect = new Rectangle();
@@ -65,6 +68,7 @@ namespace Tetris
                 Canvas.SetTop(rect, top*20);
                 gameGrid.Children.Add(rect);
                 tabRect.Add(rect);
+
                 if (i%10==0 && i!=0)
                 {
                     top++;
@@ -75,20 +79,17 @@ namespace Tetris
                     left ++;
                 }
             }
-        }
-        
+        }        
         public  void fillGrid()
         {
-            tabRect.ForEach(delegate (Rectangle rect) {
-                var id = int.Parse(rect.Tag.ToString());
 
-                rect.Fill = new SolidColorBrush(Colors.White);
-                if (test.emplacement.Contains(id))
-                {
-                    rect.Fill = new SolidColorBrush(Colors.Maroon);
-                }
-
-            });
+            for (int i = 0; i < tabRect.Count; i++)
+            {
+                if (grille.tableau[i] != null)
+                    tabRect[i].Fill = grille.tableau[i].couleur;
+                else
+                    tabRect[i].Fill = new SolidColorBrush(Colors.White);
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
