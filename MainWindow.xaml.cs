@@ -20,9 +20,10 @@ namespace Tetris
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {       
+    {
+        
         Table grille = new Table();
-        Barre test = new Barre(); // Test est la barre qui sera en cours de placement 
+        Barre test = Barre.Create(); // Test est la barre qui sera en cours de placement 
         List<Rectangle> tabRect = new List<Rectangle>(180);
         public MainWindow()
         {
@@ -31,7 +32,7 @@ namespace Tetris
             // Création du timer 
             DispatcherTimer  messageTimer = new DispatcherTimer();
             messageTimer.Tick += new EventHandler(messageTimer_Tick);
-            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 200);
+            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
             messageTimer.Start();
             this.loadGrid();
 
@@ -46,7 +47,7 @@ namespace Tetris
             if (test.bloquer)
             {
                 // Si test est bloqué, car il a touché un autre objet, alors on recréer une barre 
-                test = new Barre();
+                test = Barre.Create();
             }
 
             this.fillGrid();
@@ -98,11 +99,21 @@ namespace Tetris
             if(e.Key == Key.Right)
             {             
                 grille.Droite(ref test);
+
             }
             else if (e.Key == Key.Left)
             {               
                 grille.Gauche(ref test);
             }
+            else if (e.Key == Key.Down)
+            {
+                grille.Accelerer(ref test);
+            }
+            else if (e.Key == Key.Up)
+            {
+                test.Tourner(ref test);
+            }
+            this.fillGrid();
         }
 }
 }

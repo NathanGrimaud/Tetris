@@ -56,6 +56,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Barre.cs" />
+    <Compile Include="BarreCarre.cs" />
+    <Compile Include="BarreL.cs" />
+    <Compile Include="BarreLinv.cs" />
+    <Compile Include="BarreLongue.cs" />
+    <Compile Include="BarreT.cs" />
+    <Compile Include="BarreZ.cs" />
+    <Compile Include="BarreZinv.cs" />
     <Compile Include="Table.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

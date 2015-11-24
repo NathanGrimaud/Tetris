@@ -148,6 +148,10 @@ namespace Tetris
             }
             return false;
         }
+        public void Accelerer(ref Barre adescendre)
+        {
+            this.Descendre(ref adescendre);
+        }
 
         public bool EmplacementDispo(ref Barre acheck)
         {
@@ -162,8 +166,7 @@ namespace Tetris
 
                 // Sinon, je retourne faux 
                 else
-                    return false;                
-
+                    return false;              
             }
 
             return true;
@@ -229,7 +232,8 @@ namespace Tetris
                 }
 
             }
-            }
+        }
+
     }
 
 }

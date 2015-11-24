@@ -8,21 +8,55 @@ using System.Windows.Media;
 namespace Tetris
 {
     
-    public class Barre
+    public abstract class Barre 
     {        
         public List<int> emplacement = new List<int>() ;
         public bool bloquer;
         public SolidColorBrush couleur;
-        private static List<Color> Couleurs = new List<Color>()
+        protected static List<Color> Couleurs = new List<Color>()
         { Colors.DarkSlateGray, Colors.DarkRed, Colors.Blue, Colors.Maroon, Colors.DeepSkyBlue,
         Colors.DarkMagenta, Colors.Goldenrod, Colors.MediumTurquoise,Colors.MediumSlateBlue,
         Colors.PowderBlue,Colors.SandyBrown,Colors.SaddleBrown,Colors.DeepSkyBlue};
-        static Random r = new Random();
+        protected static Random r = new Random();
 
-        public Barre()
+        public Barre() { }
+
+        public static Barre Create()
         {
-            this.emplacement = new List<int>() { 4,5};
-            this.couleur = new SolidColorBrush(Couleurs[r.Next(Couleurs.Count)]);
+            var type = r.Next(7);
+            return new BarreL();
+            /*
+            if (type == 0)
+            {
+                return new BarreT();
+            }
+            else if (type == 1)
+            {
+                return new BarreLongue();
+            }
+            else if (type == 2)
+            {
+                return new BarreL();
+            }
+            else if (type == 3)
+            {
+                return new BarreLinv();
+            }
+            else if (type == 4)
+            {
+                return new BarreZ();
+            }
+            else if (type == 5)
+            {
+                return new BarreZinv();
+            }
+            else
+            {
+                return new BarreCarre();
+            }
+            */
         }
+        public abstract void Tourner(ref Barre barre);
+
     }
 }
