@@ -8,7 +8,23 @@
         Title="MainWindow" Height="480" Width="720" KeyDown="Window_KeyDown" >
     <Grid>
         <Label x:Name="Timer" Content="Timer" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Canvas Name="gameGrid" HorizontalAlignment="Left" Height="290" Margin="73,10,0,0" VerticalAlignment="Top" Width="579"/>
+        <Canvas Name="gameGrid" HorizontalAlignment="Left" Height="391" Margin="73,10,0,0" VerticalAlignment="Top" Width="322"/>
+        <Label x:Name="banniere" Content="" FontSize="200" Margin="89,78,35,118" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="11.639"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+            <Label.Foreground>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFFE800" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Foreground>
+        </Label>
 
     </Grid>
 </Window>

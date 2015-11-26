@@ -51,23 +51,15 @@ namespace Tetris
             else if (position == 3)
             {
                 this.emplacement[0] -= 11;
-                this.emplacement[2] += 11;
+                this.emplacement[1] += 11;
                 this.emplacement[3] -= 2;
                 position = 0;
             }
             
             // Vérification que le déménagement est correct
-            if (grille.EmplacementDispo(ref barre))
-            {              
-                foreach (int empl in b.emplacement)
-                {
-                    grille.tableau[empl] = null;
-                }
-
-                foreach (int empl in this.emplacement)
-                {
-                    grille.tableau[empl] = this;
-                }
+            if (barre.EmplacementDispo(ref grille))
+            {
+                grille.write(ref b.emplacement, this);
 
             }
             else

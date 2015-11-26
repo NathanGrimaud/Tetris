@@ -23,15 +23,17 @@ namespace Tetris
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        bool visible = true;
         Table grille = new Table();
         Barre test = Barre.Create(); // Test est la barre qui sera en cours de placement 
         List<Rectangle> tabRect = new List<Rectangle>(180);
         public MainWindow()
         {
-
+            
             InitializeComponent();
             // Création du timer 
+            banniere.Content = "GooOOoooo";
+
             DispatcherTimer  messageTimer = new DispatcherTimer();
             messageTimer.Tick += new EventHandler(messageTimer_Tick);
             messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
@@ -48,9 +50,20 @@ namespace Tetris
         }
 
         private void messageTimer_Tick(object sender, EventArgs e)
-        {    
-            // Tout les ticks, je fait descendre la barre en cours "test"         
-            grille.Descendre(ref test);           
+        {
+            //if (visible) { 
+            //    gameGrid.Visibility = Visibility.Hidden;
+            //    visible = false;
+            //}
+            //else
+            //{
+            //    gameGrid.Visibility = Visibility.Visible;
+            //    visible = true;
+            //}
+
+            // Tout les ticks, je fait descendre la barre en cours "test"      
+            banniere.Content = "";   
+            test.Descendre(ref grille);           
             Timer.Content = DateTime.Now.Second;     
                              
             if (test.bloquer)
@@ -60,6 +73,9 @@ namespace Tetris
             }
 
             this.fillGrid();
+
+            
+
         }
         // NathanGrimaud sera aussi prié de commenté son code :p
         public void loadGrid()
@@ -107,16 +123,15 @@ namespace Tetris
             // Je choppe l'évenement Key, si celui-ci envoie a droite, je balance a droite, si l'user envoie a gauche, je décale a gauche 
             if(e.Key == Key.Right)
             {             
-                grille.Droite(ref test);
-
+                test.Droite(ref grille);
             }
             else if (e.Key == Key.Left)
             {               
-                grille.Gauche(ref test);
+                test.Gauche(ref grille);
             }
             else if (e.Key == Key.Down)
             {
-                grille.Accelerer(ref test);
+                test.Accelerer(ref grille);
             }
             else if (e.Key == Key.Up)
             {
