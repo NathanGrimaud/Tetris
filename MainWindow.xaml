@@ -9,7 +9,7 @@
     <Grid>
         <Label x:Name="Timer" Content="Timer" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Canvas Name="gameGrid" HorizontalAlignment="Left" Height="391" Margin="73,10,0,0" VerticalAlignment="Top" Width="322"/>
-        <Label x:Name="banniere" Content="" FontSize="200" Margin="89,78,35,118" RenderTransformOrigin="0.5,0.5">
+        <Label x:Name="banniere" Content="" FontSize="200" Margin="65,101,59,95" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
