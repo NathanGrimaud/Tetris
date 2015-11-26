@@ -9,8 +9,7 @@ namespace Tetris
     public class Table
     {
         public Barre[] tableau = new Barre[180];
-        public Table() { } // Constructeur 
-        
+        public Table() { } // Constructeur         
         public bool Placer (Barre aplacer) // Pour placer une barre grace a la liste de ces coordonnées 
         {
             bool placementvalide = EmplacementDispo(ref aplacer);

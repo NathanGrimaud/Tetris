@@ -24,40 +24,40 @@ namespace Tetris
 
         public static Barre Create()
         {
-            var type = r.Next(7);
-            return new BarreZinv();
-            /*
-            if (type == 0)
-            {
-                return new BarreT();
-            }
-            else if (type == 1)
-            {
-                return new BarreLongue();
-            }
-            else if (type == 2)
-            {
-                return new BarreL();
-            }
-            else if (type == 3)
-            {
-                return new BarreLinv();
-            }
-            else if (type == 4)
-            {
-                return new BarreZ();
-            }
-            else if (type == 5)
-            {
-                return new BarreZinv();
-            }
-            else
-            {
-                return new BarreCarre();
-            }
-            */
+            //var type = r.Next(7);
+            return new BarreL();
+            //barreL
+            //if (type == 0)
+            //{
+            //    return new BarreT();
+            //}
+            //else if (type == 1)
+            //{
+            //    return new BarreLongue();
+            //}
+            //else if (type == 2)
+            //{
+            //    return new BarreL();
+            //}
+            //else if (type == 3)
+            //{
+            //    return new BarreLinv();
+            //}
+            //else if (type == 4)
+            //{
+            //    return new BarreZ();
+            //}
+            //else if (type == 5)
+            //{
+            //    return new BarreZinv();
+            //}
+            //else
+            //{
+            //    return new BarreCarre();
+            //}
+
         }
-        public abstract void Tourner(ref Barre barre);
+        public abstract void Tourner(ref Barre barre, ref Table grille);
 
     }
 }

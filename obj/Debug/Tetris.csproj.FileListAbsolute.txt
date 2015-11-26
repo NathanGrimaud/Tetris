@@ -1,0 +1,14 @@
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\Tetris.exe.config
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\Tetris.exe
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\Tetris.pdb
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\MainWindow.g.cs
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\App.g.cs
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.cache
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.lref
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\MainWindow.baml
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris.g.resources
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris.Properties.Resources.resources
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris.csproj.GenerateResource.Cache
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris.exe
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris.pdb

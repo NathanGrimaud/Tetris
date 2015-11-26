@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+
 
 namespace Tetris
 {
@@ -32,10 +34,17 @@ namespace Tetris
             // Création du timer 
             DispatcherTimer  messageTimer = new DispatcherTimer();
             messageTimer.Tick += new EventHandler(messageTimer_Tick);
-            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
             messageTimer.Start();
             this.loadGrid();
-
+            this.playSong("theme");
+        }
+        private void playSong(string nom)
+        {
+           
+            /*
+            SoundPlayer sp = new SoundPlayer();
+            sp.SoundLocation*/
         }
 
         private void messageTimer_Tick(object sender, EventArgs e)
@@ -111,7 +120,7 @@ namespace Tetris
             }
             else if (e.Key == Key.Up)
             {
-                test.Tourner(ref test);
+                test.Tourner(ref test,ref grille);
             }
             this.fillGrid();
         }
