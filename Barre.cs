@@ -25,8 +25,8 @@ namespace Tetris
         public static Barre Create()
         {
             //var type = r.Next(7);
-            return new BarreL();
-            ////barreL
+            return new BarreZinv();
+
             //if (type == 0)
             //{
             //    return new BarreT();
@@ -53,7 +53,7 @@ namespace Tetris
             //}
             //else
             //{
-            //return new BarreCarre();
+            //    return new BarreCarre();
             //}
 
         }
@@ -176,7 +176,10 @@ namespace Tetris
             foreach (int emplacement in this.emplacement)
             {
                 // Si l'emplacement est en dehors des limites du tableau, je return false
+
                 if (emplacement >= 180)
+                    return false;
+                if (emplacement < 0)
                     return false;
                 // Sinon si l'emplacement du tableau est vide ou corresponds déja a la même barre, alors je continue le foreach 
                 else if (grille.tableau[emplacement] == null || grille.tableau[emplacement] == this) { }
@@ -247,11 +250,9 @@ namespace Tetris
                 {
                     Barre encours = grille.tableau[i];
                     // Puis, tant que les barre du dessus peuvent descendre, elle descende 
-                    while (encours.Descendre(ref grille));
+                    while (encours.Descendre(ref grille));                    
                 }
-
             }
         }
-
     }
 }

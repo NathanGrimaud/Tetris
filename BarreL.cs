@@ -27,40 +27,52 @@ namespace Tetris
             b.emplacement = emplacements;
 
             // Déménagement de la barre 
-            if (position == 0)
+            if (position == 0 )
             {
-                this.emplacement[0] -= 9;
-                this.emplacement[1] -= 9;
-                this.emplacement[3] += 2;
-                position++;
+
+                if (this.emplacement[0] - 9 > 0 && this.emplacement[1] - 9 > 0)
+                {
+                    this.emplacement[0] -= 9;
+                    this.emplacement[1] -= 9;
+                    this.emplacement[3] += 2;
+                    position++; 
+                }
             }
-            else if (position == 1)
+            else if (position == 1 )
             {
-                this.emplacement[0] += 2;
-                this.emplacement[1] += 11;
-                this.emplacement[3] -= 11;
-                position++;
+                if (this.emplacement[3] - 11 > 0 )
+                {
+                    this.emplacement[0] += 2;
+                    this.emplacement[1] += 11;
+                    this.emplacement[3] -= 11;
+                    position++; 
+                }
             }
-            else if (position == 2)
+            else if (position == 2 )
             {
-                this.emplacement[0] += 20;
-                this.emplacement[1] += 9;
-                this.emplacement[3] -= 9;
-                position++;
+                if (this.emplacement[3] - 9 > 0)
+                {
+                    this.emplacement[0] += 20;
+                    this.emplacement[1] += 9;
+                    this.emplacement[3] -= 9;
+                    position++; 
+                }
             }
-            else if (position == 3)
+            else if (position == 3 )
             {
-                this.emplacement[0] -= 11;
-                this.emplacement[1] += 11;
-                this.emplacement[3] -= 2;
-                position = 0;
+                if (this.emplacement[0] - 13 > 0 && this.emplacement[1] - 11 > 0)
+                {
+                    this.emplacement[0] -= 13;
+                    this.emplacement[1] -= 11;
+                    this.emplacement[3] += 18;
+                    position = 0; 
+                }
             }
             
             // Vérification que le déménagement est correct
             if (barre.EmplacementDispo(ref grille))
             {
                 grille.write(ref b.emplacement, this);
-
             }
             else
             {
