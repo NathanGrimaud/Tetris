@@ -19,6 +19,8 @@ namespace Tetris
             // Sauvegarde des précédents emplacements
             List<int> emplacements = new List<int>();
             Barre b = new BarreL();
+            int precposition = position;
+
             foreach (var emp in barre.emplacement)
             {
                 emplacements.Add(emp);
@@ -51,6 +53,7 @@ namespace Tetris
             else
             {
                 this.emplacement = b.emplacement;
+                this.position = precposition;
             }
         }
     }

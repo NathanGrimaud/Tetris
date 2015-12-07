@@ -7,10 +7,10 @@ using System.Windows.Media;
 
 namespace Tetris
 {
-    
-    public abstract class Barre 
-    {        
-        public List<int> emplacement = new List<int>() ;
+
+    public abstract class Barre
+    {
+        public List<int> emplacement = new List<int>();
         public bool bloquer;
         public SolidColorBrush couleur;
         protected static List<Color> Couleurs = new List<Color>()
@@ -24,37 +24,37 @@ namespace Tetris
 
         public static Barre Create()
         {
-            //var type = r.Next(7);
-            return new BarreLongue();
+            var type = r.Next(7);
+            //////return new BarreLongue();
 
-            //if (type == 0)
-            //{
-            //    return new BarreT();
-            //}
-            //else if (type == 1)
-            //{
-            //    return new BarreLongue();
-            //}
-            //else if (type == 2)
-            //{
-            //    return new BarreL();
-            //}
-            //else if (type == 3)
-            //{
-            //    return new BarreLinv();
-            //}
-            //else if (type == 4)
-            //{
-            //    return new BarreZ();
-            //}
-            //else if (type == 5)
-            //{
-            //    return new BarreZinv();
-            //}
-            //else
-            //{
-            //    return new BarreCarre();
-            //}
+            if (type == 0)
+            {
+                return new BarreT();
+            }
+            else if (type == 1)
+            {
+                return new BarreLongue();
+            }
+            else if (type == 2)
+            {
+                return new BarreL();
+            }
+            else if (type == 3)
+            {
+                return new BarreLinv();
+            }
+            else if (type == 4)
+            {
+                return new BarreZ();
+            }
+            else if (type == 5)
+            {
+                return new BarreZinv();
+            }
+            else
+            {
+                return new BarreCarre();
+            }
 
         }
         public abstract void Tourner(ref Barre barre, ref Table grille);
@@ -77,19 +77,20 @@ namespace Tetris
             {
 
                 grille.write(ref precemplacement, this);
-                this.posInitiale = false;          
+                this.posInitiale = false;
                 return true;
 
             }
             else
             {
                 // Sinon, je remets tout comme avant grace a la liste copié auparavant 
-                this.checkLigne(ref grille);
                 this.emplacement = precemplacement;
                 this.bloquer = true;
+
+                this.checkLigne(ref grille);
                 if (this.posInitiale)
                 {
-                   //fin du jeu
+                    //fin du jeu
                 }
                 return false;
             }
@@ -178,6 +179,8 @@ namespace Tetris
         public bool EmplacementDispo(ref Table grille)
         {
             // Je tourne chaque emplacement de la barre a check 
+            List<int> precemplacement = new List<int>();
+
             foreach (int emplacement in this.emplacement)
             {
                 // Si l'emplacement est en dehors des limites du tableau, je return false
@@ -186,14 +189,29 @@ namespace Tetris
                     return false;
                 if (emplacement < 0)
                     return false;
+               
+                    
                 // Sinon si l'emplacement du tableau est vide ou corresponds déja a la même barre, alors je continue le foreach 
-                else if (grille.tableau[emplacement] == null || grille.tableau[emplacement] == this) { }
+                else if (grille.tableau[emplacement] == null || grille.tableau[emplacement] == this)
+                {
+                    precemplacement.Add(emplacement);
+                }
 
                 // Sinon, je retourne faux 
                 else
                     return false;
             }
 
+            precemplacement = precemplacement.OrderByDescending(k => k).ToList();
+
+            foreach (int emplacement in this.emplacement)
+            {
+                    if (precemplacement.Contains(emplacement + 1))
+                    {
+                        if ((emplacement + 1) / 10 != emplacement / 10)
+                            return false;
+                    }
+            }
             return true;
         }
 
@@ -240,49 +258,77 @@ namespace Tetris
 
         public void supprimerLigne(int j, ref Table grille)
         {
+            // Une barre désagrégé est une barre qui a perdu une partie de soit pendant la suppression
+            List<Barre> BarreDesagrégé = new List<Barre>();
+
+            // Cette boucle for passe en revu toute la ligne qui doit être supprimé
             //Pour supprimer une ligne, je passe par chaque index du tableau correspondant à cette ligne, et je les mets à null 
+
             for (int i = 0; i <= 9; i++)
             {
-
-                if(grille.tableau[j + i] != null)
+               
+                if (grille.tableau[j + i] != null)
                 {
                     if (grille.tableau[j + i].emplacement.Contains(j + i))
+                    {
+                        // J'ajoute la barre qui perd une case dans le tableau de barre desagragé
+                        BarreDesagrégé.Add(grille.tableau[j + i]);
+
+                        // Je supprime l'emplacement de la liste
                         grille.tableau[j + i].emplacement.Remove(j + i);
+
+                        // Je supprime l'emplacement du tableau 
+                        grille.tableau[j + i] = null;
+         
+                    }
+                        
                 }              
-                grille.tableau[j + i] = null;
+               
+
             }
+            // Je fait tourner toutes les barres desagrégé, pour les faires descendre carré par carré 
+            foreach (var encours in BarreDesagrégé)
+            {
+                List<int> newlist = new List<int>();
+                // Je copie ma liste d'emplacement dans une nouvelle
+                foreach (var emp in encours.emplacement)
+                {
+                    newlist.Add(emp);
+                    grille.tableau[emp] = null;
+                }
+
+                // Je la tri par ordre descendant 
+                newlist = newlist.OrderByDescending(k => k).ToList();
+
+                // Puis j'écris grâce à cette nouvelle liste dans le tableau et dans la barre concerné 
+                foreach (var emp in newlist)
+                {
+                    encours.emplacement.Remove(emp);
+                    int newemp = descendreCut(ref grille, emp);
+                    grille.tableau[newemp] = encours;
+                    encours.emplacement.Add(newemp);
+                }
+            }
+            // Je fait tourner le reste du tableau du bas vers le haut, a partir de la ligne supprime (j étant la coordonnée de la première case de la ligne supprimé) 
             for (int i = j; i >= 0; i--)
             {
                 if (grille.tableau[i] != null)
                 {
                     Barre encours = grille.tableau[i];
+
+
                     // Puis, tant que les barre du dessus peuvent descendre, elle descende 
-                    // ne marche pas quand la barre n'est pas complète, 
-                    //car les emplacements ne sont pas supprimés
-                    List<int> newlist = new List<int>();
-                    List<int> preclist = new List<int>();
-
-                    foreach (var emp in encours.emplacement)
-                    {
-                        grille.tableau[emp] = null;
-                        grille.tableau[descendreCut(ref grille, emp)] = encours;
-                        newlist.Add(descendreCut(ref grille, emp));
-                    }
-                    
-                    encours.emplacement = newlist;
-
+                    while(encours.Descendre(ref grille));
 
                 }
             }
-            foreach (var emp in grille.tableau)
-            {
-                //if (emp != null)
-                   // while(emp.Descendre(ref grille));
-            }
+          
         }
+
+        // Cette fonction me permet de descendre emplacement par emplacement une barre. Necessaire lorsque une barre est désagrégé. 
         public int descendreCut(ref Table grille, int emp)
         {
-            while (emp + 10 < 180 && grille.tableau[emp + 10] != null)
+            while ((emp + 10) < 180 && (grille.tableau[emp + 10] == null))
             {
                 emp = emp + 10;
             }

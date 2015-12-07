@@ -25,7 +25,7 @@ namespace Tetris
                 emplacements.Add(emp);
             }
             b.emplacement = emplacements;
-
+            int precposition = position;
             // Déménagement de la barre 
             if (position == 0 )
             {
@@ -77,6 +77,7 @@ namespace Tetris
             else
             {
                 this.emplacement = b.emplacement;
+                this.position = precposition;
             }
         }
     }
