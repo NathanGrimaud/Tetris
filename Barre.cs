@@ -19,13 +19,13 @@ namespace Tetris
         Colors.PowderBlue,Colors.SandyBrown,Colors.SaddleBrown,Colors.DeepSkyBlue};
         protected static Random r = new Random();
         protected int position = 0;
-
+        public bool posInitiale = true;
         public Barre() { }
 
         public static Barre Create()
         {
             //var type = r.Next(7);
-            return new BarreZinv();
+            return new BarreLongue();
 
             //if (type == 0)
             //{
@@ -58,7 +58,7 @@ namespace Tetris
 
         }
         public abstract void Tourner(ref Barre barre, ref Table grille);
-
+        //vérifier le débordement sur un coté
 
         public bool Descendre(ref Table grille) // Pour faire descendre une barre 
         {
@@ -77,6 +77,7 @@ namespace Tetris
             {
 
                 grille.write(ref precemplacement, this);
+                this.posInitiale = false;          
                 return true;
 
             }
@@ -86,6 +87,10 @@ namespace Tetris
                 this.checkLigne(ref grille);
                 this.emplacement = precemplacement;
                 this.bloquer = true;
+                if (this.posInitiale)
+                {
+                   //fin du jeu
+                }
                 return false;
             }
 
@@ -214,7 +219,7 @@ namespace Tetris
                 int j = i * 10;
                 bool entier = true;
                 // Tant que j n'est pas arrivé au bout de la ligne et qu'il n'y a pas de trou dans la ligne je boucle 
-                while (j != i * 10 + 9 && entier)
+                while (j != i * 10 + 10 && entier) 
                 {
                     if (grille.tableau[j] == null)
                     {
@@ -222,7 +227,7 @@ namespace Tetris
                     }
 
                     j++;
-                }
+                } 
 
                 // Si il n'y a pas eu de trou dans la ligne, je la supprime
                 if (entier)
@@ -230,10 +235,7 @@ namespace Tetris
                     this.supprimerLigne(i * 10, ref grille);
                     this.checkLigne(ref grille);
                 }
-
-
             }
-
         }
 
         public void supprimerLigne(int j, ref Table grille)
@@ -241,18 +243,35 @@ namespace Tetris
             //Pour supprimer une ligne, je passe par chaque index du tableau correspondant à cette ligne, et je les mets à null 
             for (int i = 0; i <= 9; i++)
             {
+
+                if(grille.tableau[j + i] != null)
+                {
+                    if (grille.tableau[j + i].emplacement.Contains(j + i))
+                        grille.tableau[j + i].emplacement.Remove(j + i);
+                }              
                 grille.tableau[j + i] = null;
             }
-
             for (int i = j; i >= 0; i--)
             {
                 if (grille.tableau[i] != null)
                 {
                     Barre encours = grille.tableau[i];
                     // Puis, tant que les barre du dessus peuvent descendre, elle descende 
-                    while (encours.Descendre(ref grille));                    
+                    // ne marche pas quand la barre n'est pas complète, 
+                    //car les emplacements ne sont pas supprimés
+                    encours.descendreCut(ref grille);                    
                 }
             }
+            foreach (var emp in grille.tableau)
+            {
+                if (emp != null)
+                    while(emp.Descendre(ref grille));
+            }
         }
+        public void descendreCut(ref Table grille)
+        {
+                                                                                                                                                                                                                                                                                                           
+        }
+
     }
 }

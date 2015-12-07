@@ -18,6 +18,7 @@ using System.Windows.Threading;
 
 namespace Tetris
 {
+
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
@@ -27,23 +28,24 @@ namespace Tetris
         Table grille = new Table();
         Barre test = Barre.Create(); // Test est la barre qui sera en cours de placement 
         List<Rectangle> tabRect = new List<Rectangle>(180);
+        public Window GameWindow;
         public MainWindow()
         {
             
             InitializeComponent();
+            GameWindow = this;
             // Création du timer 
             banniere.Content = "GooOOoooo";
 
             DispatcherTimer  messageTimer = new DispatcherTimer();
             messageTimer.Tick += new EventHandler(messageTimer_Tick);
-            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
+            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
             messageTimer.Start();
             this.loadGrid();
             this.playSong("theme");
         }
         private void playSong(string nom)
-        {
-           
+        {           
             /*
             SoundPlayer sp = new SoundPlayer();
             sp.SoundLocation*/
