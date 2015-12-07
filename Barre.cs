@@ -259,18 +259,34 @@ namespace Tetris
                     // Puis, tant que les barre du dessus peuvent descendre, elle descende 
                     // ne marche pas quand la barre n'est pas complète, 
                     //car les emplacements ne sont pas supprimés
-                    encours.descendreCut(ref grille);                    
+                    List<int> newlist = new List<int>();
+                    List<int> preclist = new List<int>();
+
+                    foreach (var emp in encours.emplacement)
+                    {
+                        grille.tableau[emp] = null;
+                        grille.tableau[descendreCut(ref grille, emp)] = encours;
+                        newlist.Add(descendreCut(ref grille, emp));
+                    }
+                    
+                    encours.emplacement = newlist;
+
+
                 }
             }
             foreach (var emp in grille.tableau)
             {
-                if (emp != null)
-                    while(emp.Descendre(ref grille));
+                //if (emp != null)
+                   // while(emp.Descendre(ref grille));
             }
         }
-        public void descendreCut(ref Table grille)
+        public int descendreCut(ref Table grille, int emp)
         {
-                                                                                                                                                                                                                                                                                                           
+            while (emp + 10 < 180 && grille.tableau[emp + 10] != null)
+            {
+                emp = emp + 10;
+            }
+            return emp;                                                                                                                                                                                                                                                                  
         }
 
     }
