@@ -66,5 +66,6 @@
             <Button x:Name="play" Content="PLAY ! " Margin="20,20,57,10"  Width="110" Height="34" FontSize="18.667" Click="play_Click"/>
         </StackPanel>
         <Image x:Name="tetris" HorizontalAlignment="Left" Height="107" Margin="101,171,0,0" VerticalAlignment="Top" Width="202" Source="Assets/tetris.png"/>
+        <TextBlock x:Name="GameOver" HorizontalAlignment="Left" Margin="421,100,0,0" TextWrapping="Wrap" Text="GAME OVER !!!" VerticalAlignment="Top" FontFamily="Segoe UI Semibold" FontSize="64" Visibility="Collapsed"/>
     </Grid>
 </Window>

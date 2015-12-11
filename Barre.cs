@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace Tetris
@@ -96,6 +97,13 @@ namespace Tetris
                 {
                     MainWindow.main.Termine.Text = "Partie Terminée";
                     Partie.stop();
+                    MainWindow.main.GameOver.Visibility = System.Windows.Visibility.Visible;
+                    MainWindow.main.ScoreNom.Visibility = Visibility.Collapsed;
+                    MainWindow.main.ScoreScore.Visibility = Visibility.Collapsed;
+                    MainWindow.main.ScoreNiveau.Visibility = Visibility.Collapsed;
+                    MainWindow.main.labelScore.Visibility = Visibility.Collapsed;
+                    MainWindow.main.labelScoreLevel.Visibility = Visibility.Collapsed;
+                    MainWindow.main.labelScoreNom.Visibility = Visibility.Collapsed;
                 }
                 return false;
             }

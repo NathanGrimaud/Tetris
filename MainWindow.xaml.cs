@@ -170,6 +170,7 @@ namespace Tetris
         private void button_Click(object sender, RoutedEventArgs e)
         {
             StopParty();
+            
         }
 
         public void StopParty()
@@ -180,7 +181,7 @@ namespace Tetris
             {
                 t.Abort();
             }
-
+            GameOver.Visibility = Visibility.Collapsed;
             game = null;
             gameGrid.Children.Clear();
             menu.Visibility = Visibility.Visible;
