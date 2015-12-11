@@ -31,14 +31,8 @@ namespace Tetris
         {
             
             InitializeComponent();
-            
-            Level level2 = new Level();
-
             main = this;            
-
-
             fenetre.Background = new SolidColorBrush(Colors.LightBlue);
- 
             main = this;
             
 
@@ -75,6 +69,7 @@ namespace Tetris
                 level = new Level()
                 {
                     backgroundimage = "",
+                    numero = 1,
                     backgroundcolor = Colors.LightBlue,
                     Couleurs = new List<Color>()
         { Colors.DarkSlateGray, Colors.DarkRed, Colors.Blue, Colors.Maroon, Colors.DeepSkyBlue,
@@ -83,6 +78,7 @@ namespace Tetris
                 decrement = 0,
                     musique = @"",
                     timer = 500,
+                    fill = new List<Color> { Colors.White }
                 };
             }
             if (level2.IsChecked == true)
@@ -90,6 +86,7 @@ namespace Tetris
                 level = new Level()
                 {
                     backgroundimage = "",
+                    numero = 2,
                     backgroundcolor = Colors.LightBlue,
                     Couleurs = new List<Color>{ Colors.DarkSlateGray, Colors.DarkRed, Colors.Blue, Colors.Maroon, Colors.DeepSkyBlue,
         Colors.DarkMagenta, Colors.Goldenrod, Colors.MediumTurquoise,Colors.MediumSlateBlue,
@@ -97,6 +94,7 @@ namespace Tetris
                     decrement = 0,
                     musique = @"",
                     timer = 100,
+                    fill = new List<Color> { Colors.White }
                 };
             }
             if (level3.IsChecked == true)
@@ -104,13 +102,31 @@ namespace Tetris
                 level = new Level()
                 {
                     backgroundimage = "",
+                    numero = 3,
                     backgroundcolor = Colors.Black,
-                    Couleurs = new List<Color>{ Colors.Green},
+                    Couleurs = new List<Color>{ Colors.Red, Colors.Yellow, Colors.Orange, Colors.Magenta, Colors.Cyan, Colors.Purple, Colors.Green, Colors.Pink, Colors.Blue},
                     decrement = 0,
                     musique = @"",
-                    timer = 200,
+                    timer = 100,
+                    fill = new List<Color> { Colors.White }
                 };
             }
+
+            if (level4.IsChecked == true)
+            {
+                level = new Level()
+                {
+                    backgroundimage = "",
+                    numero = 4,
+                    backgroundcolor = Colors.Black,
+                    Couleurs = new List<Color> {Colors.White},
+                    decrement = 1,
+                    musique = @"",
+                    timer = 200,
+                    fill = new List<Color> { Colors.Red, Colors.Yellow, Colors.Orange, Colors.Magenta, Colors.Cyan, Colors.Purple, Colors.Green, Colors.Pink, Colors.Blue },
+                };
+            }
+
             menu.Visibility = Visibility.Collapsed;
             game = new Partie(main, level);
         }

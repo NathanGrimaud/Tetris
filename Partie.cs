@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace Tetris
 {
@@ -39,22 +40,34 @@ namespace Tetris
             Barre.Couleurs = level.Couleurs;
             main.fenetre.Background = new SolidColorBrush(level.backgroundcolor);
 
+            if (level.numero == 3) { 
+                main.nyan.Visibility = System.Windows.Visibility.Visible;
+                main.image.Visibility = System.Windows.Visibility.Visible;
+            }
 
             test = Barre.Create(); // Test est la barre qui sera en cours de placement 
             tabRect = new List<Rectangle>(180);
             main.banniere.Content = "GooOOoooo";
-            this.grille = new Table(main, tabRect);
+            this.grille = new Table(main, tabRect, level);
             messageTimer = new DispatcherTimer();
             messageTimer.Tick += new EventHandler(messageTimer_Tick);
-
-            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
-
             messageTimer.Interval = new TimeSpan(0, 0, 0, 0, level.timer);
-
             messageTimer.Start();
             this.playSong("theme");
             partie = this;
+
+            if(level.numero == 4)
+            {
+                main.gameGrid.RenderTransform = new RotateTransform(180,main.gameGrid.Width /2, main.gameGrid.Height / 2);
+
+                for (int i = 0; i < tabRect.Count; i++)
+                {                  
+                        tabRect[i].Fill = new SolidColorBrush(Colors.Black);
+                }
+            }
         }
+
+       
 
         private void playSong(string nom)
         {
@@ -66,6 +79,8 @@ namespace Tetris
 
         private void messageTimer_Tick(object sender, EventArgs e)
         {
+            if (level.numero == 3)
+                grille.vibrate();
             main.banniere.Content = "";
             test.Descendre(grille);
             main.Timer.Content = DateTime.Now.Second;
