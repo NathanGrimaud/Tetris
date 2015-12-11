@@ -21,7 +21,7 @@ namespace Tetris
         {
 
         }
-        public void Read()
+        public void Read(int level)
         {
             if (File.Exists("Score.json"))
             {
@@ -33,7 +33,10 @@ namespace Tetris
                     {
                         foreach (var score in s)
                         {
-                            listeScore.Add(score);
+                            if(score.Niveau==level)
+                            {
+                                listeScore.Add(score);
+                            }                               
                         }
                         this.Trier();
                         foreach (var score in listeScore)

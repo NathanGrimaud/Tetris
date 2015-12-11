@@ -37,7 +37,7 @@ namespace Tetris
         {
            
             ScoresPartie = new Score();
-            ScoresPartie.Read();
+            ScoresPartie.Read(level.numero);
             this.enregistré = false;
             this.main = main;
             this.level = level;
