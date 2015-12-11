@@ -33,7 +33,7 @@ namespace Tetris
                     {
                         foreach (var score in s)
                         {
-                            if(score.Niveau==level)
+                            if(score.Niveau == level)
                             {
                                 listeScore.Add(score);
                             }                               

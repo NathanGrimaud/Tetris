@@ -51,3 +51,10 @@ C:\Users\Alexandre\Documents\Tetris\bin\Debug\WpfAnimatedGif.xml
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\WpfAnimatedGif.dll
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\WpfAnimatedGif.xml
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
+C:\Users\MacPro\Documents\Tetris\bin\Debug\Assets\level1.mp3
+C:\Users\MacPro\Documents\Tetris\bin\Debug\Newtonsoft.Json.dll
+C:\Users\MacPro\Documents\Tetris\bin\Debug\WpfAnimatedGif.dll
+C:\Users\MacPro\Documents\Tetris\bin\Debug\Newtonsoft.Json.xml
+C:\Users\MacPro\Documents\Tetris\bin\Debug\WpfAnimatedGif.xml
+C:\Users\MacPro\Documents\Tetris\obj\Debug\Tetris_Content.g.cs
+C:\Users\MacPro\Documents\Tetris\obj\Debug\GeneratedInternalTypeHelper.g.cs

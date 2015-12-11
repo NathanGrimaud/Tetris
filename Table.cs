@@ -75,6 +75,7 @@ namespace Tetris
             {
                 if (this.tableau[i] != null)
                     tabRect[i].Fill = this.tableau[i].couleur;
+                // SI le niveau est a 5, il faut alors attribuer une couleur aléatoire à chaque endroit laissé vide précédement
                 else if(lvl.numero != 5)
                     tabRect[i].Fill = new SolidColorBrush(lvl.fill[r.Next(lvl.fill.Count)]);
                 else if(lvl.numero == 5 && tabRect[i].Fill.ToString() == Colors.Black.ToString() || tabRect[i].Fill.ToString() == Colors.White.ToString())

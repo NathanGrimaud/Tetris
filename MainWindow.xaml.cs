@@ -36,12 +36,8 @@ namespace Tetris
 
             Closing += Window_Closing;
             AllThreads = new List<Thread>();
-            Level level2 = new Level();
-
-
             main = this;            
             fenetre.Background = new SolidColorBrush(Colors.LightBlue);
-            main = this;
             
 
 
@@ -93,14 +89,13 @@ namespace Tetris
             {
                 level = new Level()
                 {
-                    backgroundimage = "",
                     numero = 2,
                     backgroundcolor = Colors.LightBlue,
                     Couleurs = new List<Color>{ Colors.DarkSlateGray, Colors.DarkRed, Colors.Blue, Colors.Maroon, Colors.DeepSkyBlue,
         Colors.DarkMagenta, Colors.Goldenrod, Colors.MediumTurquoise,Colors.MediumSlateBlue,
         Colors.PowderBlue,Colors.SandyBrown,Colors.SaddleBrown,Colors.DeepSkyBlue},
                     decrement = 0,
-                    musique = "",
+                    musique = "level2.mp3",
                     timer = 100,
                     fill = new List<Color> { Colors.White }
                 };
@@ -117,7 +112,7 @@ namespace Tetris
         Colors.DarkMagenta, Colors.Goldenrod, Colors.MediumTurquoise,Colors.MediumSlateBlue,
         Colors.PowderBlue,Colors.SandyBrown,Colors.SaddleBrown,Colors.DeepSkyBlue},
                     decrement = 1,
-                    musique = @"",
+                    musique = "level3.mp3",
                     timer = 100,
                     fill = new List<Color> { Colors.White }
                 };
@@ -130,11 +125,9 @@ namespace Tetris
                     backgroundimage = "",
                     numero = 4,
                     backgroundcolor = Colors.Black,
-                    Couleurs = new List<Color>{ Colors.Red, Colors.Yellow, Colors.Orange, Colors.Magenta, Colors.Cyan, Colors.Purple, Colors.Green, Colors.Pink, Colors.Blue},
+                    Couleurs = new List<Color>{ Colors.Red, Colors.Yellow, Colors.Orange, Colors.Purple, Colors.Green, Colors.Blue},
                     decrement = 0,
-
-                    musique = "",
-
+                    musique = "aCat.mp3",
                     timer = 100,
                     fill = new List<Color> { Colors.White }
                 };
@@ -149,10 +142,10 @@ namespace Tetris
                     backgroundcolor = Colors.Black,
                     Couleurs = new List<Color> {Colors.White},
                     decrement = 1,
-                    musique = @"",
+                    musique = "Inversed.mp3",
 
                     timer = 200,
-                    fill = new List<Color> { Colors.Red, Colors.Yellow, Colors.Orange, Colors.Magenta, Colors.Cyan, Colors.Purple, Colors.Green, Colors.Pink, Colors.Blue },
+                    fill = new List<Color> { Colors.Red, Colors.Yellow, Colors.Orange, Colors.Cyan, Colors.Purple, Colors.Green, Colors.Blue },
                 };
             }
           
@@ -166,16 +159,53 @@ namespace Tetris
             labelScoreNom.Visibility = Visibility.Visible;
             game = new Partie(main, level);
         }
-        ~MainWindow()
-        {
-
-        }
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             foreach (var t in AllThreads)// a appeler au restart partie
             {
                 t.Abort();
             }
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            StopParty();
+        }
+
+        public void StopParty()
+        {
+
+            game.destroy();
+            foreach (var t in AllThreads)// a appeler au restart partie
+            {
+                t.Abort();
+            }
+
+            game = null;
+            gameGrid.Children.Clear();
+            menu.Visibility = Visibility.Visible;
+            ScoreNom.Visibility = Visibility.Collapsed;
+            ScoreScore.Visibility = Visibility.Collapsed;
+            ScoreNiveau.Visibility = Visibility.Collapsed;
+            labelScore.Visibility = Visibility.Collapsed;
+            labelScoreLevel.Visibility = Visibility.Collapsed;
+            labelScoreNom.Visibility = Visibility.Collapsed;
+            Termine.Foreground = new SolidColorBrush(Colors.Black);
+            ScoreNiveau.Foreground = new SolidColorBrush(Colors.Black);
+            ScoreNom.Foreground = new SolidColorBrush(Colors.Black);
+            ScoreScore.Foreground = new SolidColorBrush(Colors.Black);
+            nyan.Visibility = System.Windows.Visibility.Collapsed;
+            image.Visibility = System.Windows.Visibility.Collapsed;
+            fenetre.Background = new SolidColorBrush(Colors.LightBlue);
+            main.tetris.Visibility = Visibility.Visible;
+            ScoreNom.Text = " ";
+            ScoreScore.Text = " ";
+            ScoreNiveau.Text = " ";
+            main.ScoreActuel.Foreground = new SolidColorBrush(Colors.Black);
+            main.score.Foreground = new SolidColorBrush(Colors.Black);
+
+
+
         }
     }
 }

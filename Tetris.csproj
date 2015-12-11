@@ -119,10 +119,14 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Assets\aCat.mp3" />
+    <Content Include="Assets\Inversed.mp3" />
     <Content Include="Assets\level1.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-
+    <Content Include="Assets\level2.mp3" />
+    <Content Include="Assets\level3.mp3" />
+    <Resource Include="Assets\tetris.png" />
     <Resource Include="Assets\nyan.gif" />
   </ItemGroup>
   <ItemGroup>
