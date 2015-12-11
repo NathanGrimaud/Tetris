@@ -96,7 +96,7 @@ namespace Tetris
         Colors.PowderBlue,Colors.SandyBrown,Colors.SaddleBrown,Colors.DeepSkyBlue},
                     decrement = 0,
                     musique = "level2.mp3",
-                    timer = 100,
+                    timer = 60,
                     fill = new List<Color> { Colors.White }
                 };
             }
