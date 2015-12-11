@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.IO;
 
 namespace Tetris
 {
@@ -13,15 +15,19 @@ namespace Tetris
     {
         public MainWindow main;
         public Table grille;
-        public int level;
+        public Level level;
         public Barre test;
         public static DispatcherTimer messageTimer;
         public List<Rectangle> tabRect;
+
         public double score;
         public static Partie partie;
         public bool enregistré;
         public Score ScoresPartie;
-        public Partie(MainWindow main, int level)
+
+
+        public Partie(MainWindow main, Level level)
+
         {
             ScoresPartie = new Score();
             ScoresPartie.Read();
@@ -34,7 +40,11 @@ namespace Tetris
             this.grille = new Table(main, tabRect);
             messageTimer = new DispatcherTimer();
             messageTimer.Tick += new EventHandler(messageTimer_Tick);
+
             messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
+
+            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, level.timer);
+
             messageTimer.Start();
             this.playSong("theme");
             partie = this;
@@ -42,9 +52,10 @@ namespace Tetris
 
         private void playSong(string nom)
         {
-            /*
+           
             SoundPlayer sp = new SoundPlayer();
-            sp.SoundLocation*/
+            sp.SoundLocation = Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString();
+           
         }
 
         private void messageTimer_Tick(object sender, EventArgs e)
@@ -78,7 +89,7 @@ namespace Tetris
         }
         public Score getScore()
         {
-            ScoresPartie.Enregistrer(this.level, this.score, main.NomScore.Text);
+            ScoresPartie.Enregistrer(this.level.numero,this.score, main.NomScore.Text);
             return ScoresPartie;
         }
 

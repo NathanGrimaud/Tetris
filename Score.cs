@@ -26,9 +26,12 @@ namespace Tetris
                 {
                     string json = r.ReadToEnd();
                     var s = JsonConvert.DeserializeObject<List<Score>>(json);
-                    foreach (var score in s)
+                    if (s != null)
                     {
-                        listeScore.Add(score);
+                        foreach (var score in s)
+                        {
+                            listeScore.Add(score);
+                        }
                     }
                 }
             }

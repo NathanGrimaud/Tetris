@@ -40,5 +40,10 @@ C:\Users\Alexandre\Documents\Tetris\obj\Debug\MainWindow.baml
 C:\Users\Alexandre\Documents\Tetris\obj\Debug\Tetris.g.resources
 C:\Users\Alexandre\Documents\Tetris\obj\Debug\Tetris.Properties.Resources.resources
 C:\Users\Alexandre\Documents\Tetris\obj\Debug\Tetris.csproj.GenerateResource.Cache
+<<<<<<< HEAD
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\Newtonsoft.Json.xml
+=======
+C:\Users\Alexandre\Documents\Tetris\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alexandre\Documents\Tetris\bin\Debug\Newtonsoft.Json.xml
+>>>>>>> b18169347be6782ea2050a6bfa9f6da1be26a7b2

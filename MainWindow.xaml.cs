@@ -31,8 +31,10 @@ namespace Tetris
         {
             
             InitializeComponent();
-            main = this;
-            game = new Partie(main, 1);
+            
+            Level level2 = new Level();
+
+            main = this;            
 
         }
 
@@ -55,7 +57,36 @@ namespace Tetris
             {
                 game.test.Tourner(ref game.test, ref game.grille);
             }
-            game.grille.fillGrid(game.tabRect);
+            if(game != null)
+                game.grille.fillGrid(game.tabRect);
+        }
+
+        private void play_Click(object sender, RoutedEventArgs e)
+        {
+            Level level = new Level();
+            if (level1.IsChecked == true) {
+                level = new Level()
+                {
+                    backgroundimage = "",
+                    colors = "white",
+                    decrement = 0,
+                    musique = @"",
+                    timer = 500,
+                };
+            }
+            if (level2.IsChecked == true)
+            {
+                level = new Level()
+                {
+                    backgroundimage = "",
+                    colors = "white",
+                    decrement = 0,
+                    musique = @"",
+                    timer = 100,
+                };
+            }
+
+            game = new Partie(main, level);
         }
     }
 }
