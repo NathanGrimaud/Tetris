@@ -9,7 +9,13 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.IO;
+
 using System.Threading;
+
+using System.Windows.Media.Imaging;
+using System.Windows.Media.Animation;
+using System.Windows;
+
 
 namespace Tetris
 {
@@ -26,7 +32,6 @@ namespace Tetris
         public bool enregistré;
         public Score ScoresPartie;
         bool read;
-        MediaPlayer mp;
         public Partie(MainWindow main, Level level)
 
         {
@@ -46,6 +51,9 @@ namespace Tetris
                 main.ScoreNiveau.Foreground = new SolidColorBrush(Colors.White);
                 main.ScoreNom.Foreground = new SolidColorBrush(Colors.White);
                 main.ScoreScore.Foreground = new SolidColorBrush(Colors.White);
+                main.labelScore.Foreground = new SolidColorBrush(Colors.White);
+                main.labelScoreLevel.Foreground = new SolidColorBrush(Colors.White);
+                main.labelScoreNom.Foreground = new SolidColorBrush(Colors.White);
             }                
             else
             {
@@ -55,29 +63,52 @@ namespace Tetris
                 main.ScoreScore.Foreground = new SolidColorBrush(Colors.Black);
             }
                 
-                
+
+            if (level.numero == 4) { 
+                main.nyan.Visibility = System.Windows.Visibility.Visible;
+                main.image.Visibility = System.Windows.Visibility.Visible;
+            }
+
 
             test = Barre.Create(); // Test est la barre qui sera en cours de placement 
             tabRect = new List<Rectangle>(180);
             main.banniere.Content = "GooOOoooo";
-            this.grille = new Table(main, tabRect);
+            this.grille = new Table(main, tabRect, level);
             messageTimer = new DispatcherTimer();
             messageTimer.Tick += new EventHandler(messageTimer_Tick);
-
-            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
-
             messageTimer.Interval = new TimeSpan(0, 0, 0, 0, level.timer);
-
             messageTimer.Start();
 
             Thread myThread = new Thread(() => playSong());
             MainWindow.AllThreads.Add(myThread);
             myThread.Start();
             partie = this;
+
+            if(level.numero == 3)
+            {
+                DoubleAnimation da = new DoubleAnimation();
+                da.From = 0;
+                da.To = 360;
+                da.Duration = new Duration(TimeSpan.FromSeconds(3));
+                da.RepeatBehavior = RepeatBehavior.Forever;
+                RotateTransform rt = new RotateTransform(360, main.gameGrid.Width / 2, main.gameGrid.Height / 2);
+                main.gameGrid.RenderTransform = rt;
+                rt.BeginAnimation(RotateTransform.AngleProperty, da);
+
+            }
+            if(level.numero == 5)
+            {
+                main.gameGrid.RenderTransform = new RotateTransform(180,main.gameGrid.Width /2, main.gameGrid.Height / 2);
+
+                for (int i = 0; i < tabRect.Count; i++)
+                {                  
+                        tabRect[i].Fill = new SolidColorBrush(Colors.Black);
+                }
+            }
         }
 
+       private void playSong()
 
-        public void playSong()
         {
             
             MediaPlayer mp = new MediaPlayer();
@@ -99,6 +130,8 @@ namespace Tetris
 
         private void messageTimer_Tick(object sender, EventArgs e)
         {
+            if (level.numero == 4)
+                grille.vibrate();
             main.banniere.Content = "";
             test.Descendre(grille);
             main.Timer.Content = DateTime.Now.Second;

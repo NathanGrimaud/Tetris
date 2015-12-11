@@ -3,7 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+
         xmlns:vm="clr-namespace:Tetris"
+
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+
         xmlns:local="clr-namespace:Tetris"
         mc:Ignorable="d"
         Title="MainWindow" Height="480" Width="720" KeyDown="Window_KeyDown" >
@@ -12,7 +16,15 @@
     </Window.DataContext>
     <Grid x:Name="fenetre" Background="#FFE7F4FF">
         <Label x:Name="Timer" Content="Timer" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Canvas Name="gameGrid" HorizontalAlignment="Left" Height="391" Margin="55,30,0,0" VerticalAlignment="Top" Width="274"/>
+       
+
+        <Image x:Name="image" Canvas.Left="244" Canvas.Top="99" Margin="10,100,291,112.5" Source="Assets/arc.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image x:Name="nyan" gif:ImageBehavior.AnimatedSource="Assets/nyan.gif" Margin="236,59,38,85.5" Visibility="Collapsed" />
+        <StackPanel x:Name="turn">
+            <Canvas Name="gameGrid" HorizontalAlignment="Left" Height="391" Margin="50,30,0,0" VerticalAlignment="Top" Width="322">
+            </Canvas>
+        </StackPanel>
+
         <Label x:Name="banniere" Content="" FontSize="200" Margin="540,365,4,18.5" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
@@ -40,26 +52,24 @@
         <Label Visibility="Collapsed" x:Name="labelScoreLevel" Content="Niveau" HorizontalAlignment="Left" Margin="631,79,0,0" VerticalAlignment="Top" Width="46" Height="23"/>
        
         <TextBlock Name="ScoreActuel"  HorizontalAlignment="Left" Margin="364,336,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="32" Width="82"/>
-        <Label x:Name="label" Content="Score actuel :" HorizontalAlignment="Left" Margin="364,299,0,0" VerticalAlignment="Top" Width="82"/>
+        <Label x:Name="score" Content="Score actuel :" HorizontalAlignment="Left" Margin="364,299,0,0" VerticalAlignment="Top" Width="82"/>
 
 
 
-
+      
+          
 
 
         <StackPanel x:Name="menu"  Height="364" Margin="422,57,10,28" Width="280">
-
-            <Label x:Name="labelScoreCourrant" Content="Entrez içi votre nom : " HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-            <TextBox x:Name="NomScore" HorizontalAlignment="Right" Height="23"  TextWrapping="Wrap" Text="Anonymus" VerticalAlignment="Top" Width="96" Margin="0,0,184,0"/>
-            <TextBlock x:Name="select" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Selectionner le niveau : " VerticalAlignment="Top" Height="38" Width="270" FontSize="18.667" Margin="0,0,10,0"/>
-            <RadioButton x:Name="level1" Content="Niveau 1 " HorizontalAlignment="Left"  VerticalAlignment="Top" IsChecked="True" GroupName="lvl"/>
-            <RadioButton x:Name="level2" Content="Niveau 2" HorizontalAlignment="Left"  VerticalAlignment="Top" GroupName="lvl"/>
-            <RadioButton x:Name="level3" Content="A Cat" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Button x:Name="play" Content="PLAY ! " Margin="0"  Width="110" Height="34" FontSize="18.667" Click="play_Click"/>
-
+            <Label x:Name="label" Content="Entrez içi votre nom : " HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <TextBox x:Name="NomScore" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="Anonymus" VerticalAlignment="Top" Width="96"/>
+            <TextBlock x:Name="select" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Selectionner le niveau : " VerticalAlignment="Top" Height="38" Width="216" FontSize="18.667"/>
+            <RadioButton x:Name="level1" Content="Niveau 1" HorizontalAlignment="Left"  VerticalAlignment="Top" IsChecked="True" GroupName="lvl"/>
+            <RadioButton x:Name="level2" Content="Niveau 2" HorizontalAlignment="Left"  VerticalAlignment="Top" GroupName="lvl"></RadioButton>
+            <RadioButton x:Name="level3" Content="Niveau 3" GroupName="lvl"/>
+            <RadioButton x:Name="level4" Content="A Cat" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="lvl"/>
+            <RadioButton x:Name="level5" Content="Inversed Mode" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="lvl"/>
+            <Button x:Name="play" Content="PLAY ! " Margin="10"  Width="110" Height="34" FontSize="18.667" Click="play_Click"/>
         </StackPanel>
-
-
-
     </Grid>
 </Window>

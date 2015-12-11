@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
@@ -13,8 +14,14 @@ namespace Tetris
     {
         public Barre[] tableau = new Barre[180];
         public MainWindow windows;
-        public Table(MainWindow main, List<Rectangle> tabRect) {
+        bool bzz = true;
+        Level lvl;
+        protected static Random r = new Random();
 
+
+        public Table(MainWindow main, List<Rectangle> tabRect, Level lvl) {
+
+            this.lvl = lvl;
             var left = 1;
             var top = 1;
 
@@ -42,6 +49,8 @@ namespace Tetris
                     left++;
                 }
             }
+
+            
         } // Constructeur         
     
         public void write (ref List<int> precbarre, Barre barre)
@@ -61,13 +70,16 @@ namespace Tetris
 
         public void fillGrid(List<Rectangle> tabRect)
         {
-
+            
             for (int i = 0; i < tabRect.Count; i++)
             {
                 if (this.tableau[i] != null)
                     tabRect[i].Fill = this.tableau[i].couleur;
-                else
-                    tabRect[i].Fill = new SolidColorBrush(Colors.White);
+                else if(lvl.numero != 5)
+                    tabRect[i].Fill = new SolidColorBrush(lvl.fill[r.Next(lvl.fill.Count)]);
+                else if(lvl.numero == 5 && tabRect[i].Fill.ToString() == Colors.Black.ToString() || tabRect[i].Fill.ToString() == Colors.White.ToString())
+                    tabRect[i].Fill = new SolidColorBrush(lvl.fill[r.Next(lvl.fill.Count)]);
+                    
             }
         }
 
@@ -231,6 +243,29 @@ namespace Tetris
                 }
             }
         }
+
+        public void vibrate()
+        {
+            if (bzz)
+            {
+                windows.gameGrid.Margin = new Thickness {
+                   Left = 50,
+                   Top = 30
+                };
+                bzz = false;
+            }
+            else
+            {
+                windows.gameGrid.Margin = new Thickness
+                {
+                    Left = 55,
+                    Top = 35
+                };
+                bzz = true;
+            }
+
+        }
+
 
 
     }

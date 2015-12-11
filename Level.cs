@@ -15,7 +15,8 @@ namespace Tetris
         public List<Color> Couleurs;
         public int timer;
         public int numero;
-        public Color backgroundcolor;
+        public Color backgroundcolor; //Si noir, alors foreground blanc, si blanc alors forground noir 
+        public List<Color> fill;
     }
 
     

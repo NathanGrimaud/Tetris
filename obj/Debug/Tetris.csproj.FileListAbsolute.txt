@@ -1,7 +1,6 @@
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\Tetris.exe.config
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\Tetris.exe
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\Tetris.pdb
-C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\MainWindow.g.cs
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\App.g.cs
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris_MarkupCompile.cache
@@ -47,3 +46,8 @@ C:\Users\Alexandre\Documents\Tetris\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\Assets\level1.mp3
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris_Content.g.cs
+C:\Users\Alexandre\Documents\Tetris\bin\Debug\WpfAnimatedGif.dll
+C:\Users\Alexandre\Documents\Tetris\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\WpfAnimatedGif.dll
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\bin\Debug\WpfAnimatedGif.xml
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Debug\Tetris.csprojResolveAssemblyReference.cache

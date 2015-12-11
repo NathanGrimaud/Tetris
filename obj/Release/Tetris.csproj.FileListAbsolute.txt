@@ -16,3 +16,4 @@ C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Release\Tetris.Properties.
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Release\Tetris.csproj.GenerateResource.Cache
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Release\Tetris.exe
 C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Release\Tetris.pdb
+C:\Users\Nathan\Documents\Workspace\Tetris\Tetris\obj\Release\Tetris.csprojResolveAssemblyReference.cache
