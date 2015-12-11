@@ -3,12 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Tetris"
         xmlns:local="clr-namespace:Tetris"
         mc:Ignorable="d"
         Title="MainWindow" Height="480" Width="720" KeyDown="Window_KeyDown" >
+    <Window.DataContext>
+        <vm:Score />
+    </Window.DataContext>
     <Grid x:Name="fenetre" Background="#FFE7F4FF">
         <Label x:Name="Timer" Content="Timer" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Canvas Name="gameGrid" HorizontalAlignment="Left" Height="391" Margin="55,30,0,0" VerticalAlignment="Top" Width="322"/>
+        <Canvas Name="gameGrid" HorizontalAlignment="Left" Height="391" Margin="55,30,0,0" VerticalAlignment="Top" Width="274"/>
         <Label x:Name="banniere" Content="" FontSize="200" Margin="540,365,4,18.5" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
@@ -28,18 +32,31 @@
 
         <TextBlock x:Name="Termine" HorizontalAlignment="Left" Margin="581,15,0,0" TextWrapping="Wrap" Text="Partie en cours" VerticalAlignment="Top" Height="21" Width="96"/>
 
+        <TextBlock x:Name="ScoreNom"  Text="" FontSize="16" HorizontalAlignment="Right" Width="97" Margin="0,102,131,42" FontWeight="Bold" />
+        <TextBlock x:Name="ScoreScore"  Text="" FontSize="16" HorizontalAlignment="Right" Width="50" Margin="0,102,81,42" />
+        <TextBlock x:Name="ScoreNiveau" HorizontalAlignment="Left" Margin="631,102,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="319" Width="71" FontSize="16"/>
+        <Label Visibility="Collapsed" x:Name="labelScoreNom" Content="Nom" HorizontalAlignment="Left" Margin="484,79,0,0" VerticalAlignment="Top" Width="92" Height="23"/>
+        <Label Visibility="Collapsed" x:Name="labelScore" Content="Score" HorizontalAlignment="Left" Margin="576,79,0,0" VerticalAlignment="Top" Width="55" Height="23"/>
+        <Label Visibility="Collapsed" x:Name="labelScoreLevel" Content="Niveau" HorizontalAlignment="Left" Margin="631,79,0,0" VerticalAlignment="Top" Width="46" Height="23"/>
+       
+        <TextBlock Name="ScoreActuel"  HorizontalAlignment="Left" Margin="364,336,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="32" Width="82"/>
+        <Label x:Name="label" Content="Score actuel :" HorizontalAlignment="Left" Margin="364,299,0,0" VerticalAlignment="Top" Width="82"/>
+
+
+
+
 
 
         <StackPanel x:Name="menu"  Height="364" Margin="422,57,10,28" Width="280">
 
-            <Label x:Name="label" Content="Entrez içi votre nom : " HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-            <TextBox x:Name="NomScore" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="Anonymus" VerticalAlignment="Top" Width="96"/>
-            <TextBlock x:Name="select" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Selectionner le niveau : " VerticalAlignment="Top" Height="38" Width="216" FontSize="18.667"/>
+            <Label x:Name="labelScoreCourrant" Content="Entrez içi votre nom : " HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <TextBox x:Name="NomScore" HorizontalAlignment="Right" Height="23"  TextWrapping="Wrap" Text="Anonymus" VerticalAlignment="Top" Width="96" Margin="0,0,184,0"/>
+            <TextBlock x:Name="select" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Selectionner le niveau : " VerticalAlignment="Top" Height="38" Width="270" FontSize="18.667" Margin="0,0,10,0"/>
             <RadioButton x:Name="level1" Content="Niveau 1 " HorizontalAlignment="Left"  VerticalAlignment="Top" IsChecked="True" GroupName="lvl"/>
             <RadioButton x:Name="level2" Content="Niveau 2" HorizontalAlignment="Left"  VerticalAlignment="Top" GroupName="lvl"/>
             <RadioButton x:Name="level3" Content="A Cat" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Button x:Name="play" Content="PLAY ! " Margin="0"  Width="110" Height="34" FontSize="18.667" Click="play_Click"/>
-           
+
         </StackPanel>
 
 

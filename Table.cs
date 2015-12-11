@@ -225,6 +225,7 @@ namespace Tetris
                 if (entier)
                 {
                     Partie.partie.score += 100;
+                    MainWindow.main.ScoreActuel.Text = Partie.partie.score.ToString();
                     this.supprimerLigne(i * 10);
                     this.checkLigne();
                 }

@@ -25,8 +25,12 @@ namespace Tetris
         public static Barre Create()
         {
             var type = r.Next(7);
-            
-
+            if (Partie.partie != null)
+            {
+                Partie.partie.score += 4;
+                MainWindow.main.ScoreActuel.Text = Partie.partie.score.ToString();
+            }
+               
             if (type == 0)
             {
                 return new BarreT();

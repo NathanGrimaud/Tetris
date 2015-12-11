@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.IO;
+using System.Threading;
 
 namespace Tetris
 {
@@ -20,16 +21,16 @@ namespace Tetris
         public Barre test;
         public static DispatcherTimer messageTimer;
         public List<Rectangle> tabRect;
-
         public double score;
         public static Partie partie;
         public bool enregistré;
         public Score ScoresPartie;
-
-
+        bool read;
+        MediaPlayer mp;
         public Partie(MainWindow main, Level level)
 
         {
+           
             ScoresPartie = new Score();
             ScoresPartie.Read();
             this.enregistré = false;
@@ -39,6 +40,22 @@ namespace Tetris
             Barre.Couleurs = level.Couleurs;
             main.fenetre.Background = new SolidColorBrush(level.backgroundcolor);
 
+            if (level.backgroundcolor == Colors.Black)
+            {
+                main.Termine.Foreground = new SolidColorBrush(Colors.White);
+                main.ScoreNiveau.Foreground = new SolidColorBrush(Colors.White);
+                main.ScoreNom.Foreground = new SolidColorBrush(Colors.White);
+                main.ScoreScore.Foreground = new SolidColorBrush(Colors.White);
+            }                
+            else
+            {
+                main.Termine.Foreground = new SolidColorBrush(Colors.Black);
+                main.ScoreNiveau.Foreground = new SolidColorBrush(Colors.Black);
+                main.ScoreNom.Foreground = new SolidColorBrush(Colors.Black);
+                main.ScoreScore.Foreground = new SolidColorBrush(Colors.Black);
+            }
+                
+                
 
             test = Barre.Create(); // Test est la barre qui sera en cours de placement 
             tabRect = new List<Rectangle>(180);
@@ -52,16 +69,32 @@ namespace Tetris
             messageTimer.Interval = new TimeSpan(0, 0, 0, 0, level.timer);
 
             messageTimer.Start();
-            this.playSong("theme");
+
+            Thread myThread = new Thread(() => playSong());
+            MainWindow.AllThreads.Add(myThread);
+            myThread.Start();
             partie = this;
         }
 
-        private void playSong(string nom)
+
+        public void playSong()
         {
-           
-            SoundPlayer sp = new SoundPlayer();
-            sp.SoundLocation = Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString();
-           
+            
+            MediaPlayer mp = new MediaPlayer();
+            this.read = true;
+            var source = Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString() + "/Assets/" + level.musique;
+            mp.MediaEnded += this.close;
+            mp.Open(new Uri(source));
+            while (read)
+            {
+                mp.Play();
+            }
+            mp.Close();
+        }
+
+        private void close(object sender, EventArgs e)
+        {
+            this.read = false;
         }
 
         private void messageTimer_Tick(object sender, EventArgs e)
@@ -97,6 +130,10 @@ namespace Tetris
         {
             ScoresPartie.Enregistrer(this.level.numero,this.score, main.NomScore.Text);
             return ScoresPartie;
+        }
+        ~Partie()
+        {
+            this.read = false;
         }
 
     }
