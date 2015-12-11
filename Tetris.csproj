@@ -68,6 +68,7 @@
     <Compile Include="BarreZ.cs" />
     <Compile Include="BarreZinv.cs" />
     <Compile Include="Comparator.cs" />
+    <Compile Include="Level.cs" />
     <Compile Include="Partie.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="Table.cs" />

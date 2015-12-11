@@ -14,11 +14,11 @@ namespace Tetris
         public MainWindow main;
         public double score;
         public Table grille;
-        public int level;
+        public Level level;
         public Barre test;
         public List<Rectangle> tabRect;
 
-        public Partie(MainWindow main, int level)
+        public Partie(MainWindow main, Level level)
         {
             this.main = main;
             this.level = level;
@@ -29,7 +29,7 @@ namespace Tetris
             this.grille = new Table(main, tabRect);
             DispatcherTimer messageTimer = new DispatcherTimer();
             messageTimer.Tick += new EventHandler(messageTimer_Tick);
-            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, level.timer);
             messageTimer.Start();
             this.playSong("theme");
 
