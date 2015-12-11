@@ -25,6 +25,8 @@
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>
-
+        <TextBlock x:Name="Termine" HorizontalAlignment="Left" Margin="581,15,0,0" TextWrapping="Wrap" Text="Partie en cours" VerticalAlignment="Top" Height="21" Width="96"/>
+        <TextBox x:Name="NomScore" HorizontalAlignment="Left" Height="23" Margin="581,66,0,0" TextWrapping="Wrap" Text="Anonymus" VerticalAlignment="Top" Width="96"/>
+        <Label x:Name="label" Content="Entrez içi votre nom : " HorizontalAlignment="Left" Margin="451,63,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

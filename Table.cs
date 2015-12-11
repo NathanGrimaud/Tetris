@@ -224,6 +224,7 @@ namespace Tetris
                 // Si il n'y a pas eu de trou dans la ligne, je la supprime
                 if (entier)
                 {
+                    Partie.partie.score += 100;
                     this.supprimerLigne(i * 10);
                     this.checkLigne();
                 }

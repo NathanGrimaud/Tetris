@@ -36,7 +36,6 @@ namespace Tetris
 
         }
 
-
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             // Je choppe l'évenement Key, si celui-ci envoie a droite, je balance a droite, si l'user envoie a gauche, je décale a gauche 

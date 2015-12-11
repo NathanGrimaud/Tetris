@@ -14,7 +14,6 @@ namespace Tetris
         public int Niveau { get; set; }
         public double ScoreCourrant { get; set; }
         public string Nom { get; set; }
-
         public Score()
         {
 
@@ -45,7 +44,7 @@ namespace Tetris
             this.Nom = Nom;
             listeScore.Add(this);
         }
-        private void Write()
+        public void Write()
         {
             string stockScore = JsonConvert.SerializeObject(listeScore.ToArray());
             File.WriteAllText("Score.json", stockScore);

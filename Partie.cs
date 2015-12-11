@@ -12,27 +12,32 @@ namespace Tetris
     class Partie
     {
         public MainWindow main;
-        public double score;
         public Table grille;
         public int level;
         public Barre test;
+        public static DispatcherTimer messageTimer;
         public List<Rectangle> tabRect;
-
+        public double score;
+        public static Partie partie;
+        public bool enregistré;
+        public Score ScoresPartie;
         public Partie(MainWindow main, int level)
         {
+            ScoresPartie = new Score();
+            ScoresPartie.Read();
+            this.enregistré = false;
             this.main = main;
             this.level = level;
-
             test = Barre.Create(); // Test est la barre qui sera en cours de placement 
             tabRect = new List<Rectangle>(180);
             main.banniere.Content = "GooOOoooo";
             this.grille = new Table(main, tabRect);
-            DispatcherTimer messageTimer = new DispatcherTimer();
+            messageTimer = new DispatcherTimer();
             messageTimer.Tick += new EventHandler(messageTimer_Tick);
-            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 500);
+            messageTimer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             messageTimer.Start();
             this.playSong("theme");
-
+            partie = this;
         }
 
         private void playSong(string nom)
@@ -57,7 +62,25 @@ namespace Tetris
             grille.fillGrid(tabRect);
 
         }
-       
+       public static void stop()
+        {
+            if(messageTimer.IsEnabled)
+            {
+                messageTimer.Stop();
+            }
+            var score = partie.getScore();
+            if (!partie.enregistré)
+            {
+                partie.enregistré = true;
+                score.Write();
+
+            }                
+        }
+        public Score getScore()
+        {
+            ScoresPartie.Enregistrer(this.level, this.score, main.NomScore.Text);
+            return ScoresPartie;
+        }
 
     }
 }

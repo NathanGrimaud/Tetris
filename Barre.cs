@@ -90,7 +90,8 @@ namespace Tetris
                 grille.checkLigne();
                 if (this.posInitiale)
                 {
-                    //fin du jeu
+                    MainWindow.main.Termine.Text = "Partie Terminée";
+                    Partie.stop();
                 }
                 return false;
             }
