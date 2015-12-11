@@ -39,10 +39,13 @@
             <Label x:Name="label" Content="Entrez içi votre nom : " HorizontalAlignment="Left"  VerticalAlignment="Top"/>
             <TextBox x:Name="NomScore" HorizontalAlignment="Left" Height="23"  TextWrapping="Wrap" Text="Anonymus" VerticalAlignment="Top" Width="96"/>
             <TextBlock x:Name="select" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Selectionner le niveau : " VerticalAlignment="Top" Height="38" Width="216" FontSize="18.667"/>
-            <RadioButton x:Name="level1" Content="Niveau 1 " HorizontalAlignment="Left"  VerticalAlignment="Top" IsChecked="True" GroupName="lvl"/>
-            <RadioButton x:Name="level2" Content="Niveau 2" HorizontalAlignment="Left"  VerticalAlignment="Top" GroupName="lvl"/>
-            <RadioButton x:Name="level3" Content="A Cat" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="lvl"/>
-            <RadioButton x:Name="level4" Content="Inversed Mode" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="lvl"/>
+            <RadioButton x:Name="level1" Content="Niveau 1" HorizontalAlignment="Left"  VerticalAlignment="Top" IsChecked="True" GroupName="lvl"/>
+            <RadioButton x:Name="level2" Content="Niveau 2" HorizontalAlignment="Left"  VerticalAlignment="Top" GroupName="lvl">
+               
+            </RadioButton>
+            <RadioButton x:Name="level3" Content="Niveau 3" GroupName="lvl"/>
+            <RadioButton x:Name="level4" Content="A Cat" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="lvl"/>
+            <RadioButton x:Name="level5" Content="Inversed Mode" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="lvl"/>
             <Button x:Name="play" Content="PLAY ! " Margin="10"  Width="110" Height="34" FontSize="18.667" Click="play_Click"/>
 
         </StackPanel>

@@ -10,6 +10,8 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.IO;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Animation;
+using System.Windows;
 
 namespace Tetris
 {
@@ -40,7 +42,7 @@ namespace Tetris
             Barre.Couleurs = level.Couleurs;
             main.fenetre.Background = new SolidColorBrush(level.backgroundcolor);
 
-            if (level.numero == 3) { 
+            if (level.numero == 4) { 
                 main.nyan.Visibility = System.Windows.Visibility.Visible;
                 main.image.Visibility = System.Windows.Visibility.Visible;
             }
@@ -56,7 +58,19 @@ namespace Tetris
             this.playSong("theme");
             partie = this;
 
-            if(level.numero == 4)
+            if(level.numero == 3)
+            {
+                DoubleAnimation da = new DoubleAnimation();
+                da.From = 0;
+                da.To = 360;
+                da.Duration = new Duration(TimeSpan.FromSeconds(3));
+                da.RepeatBehavior = RepeatBehavior.Forever;
+                RotateTransform rt = new RotateTransform(360, main.gameGrid.Width / 2, main.gameGrid.Height / 2);
+                main.gameGrid.RenderTransform = rt;
+                rt.BeginAnimation(RotateTransform.AngleProperty, da);
+
+            }
+            if(level.numero == 5)
             {
                 main.gameGrid.RenderTransform = new RotateTransform(180,main.gameGrid.Width /2, main.gameGrid.Height / 2);
 
@@ -79,7 +93,7 @@ namespace Tetris
 
         private void messageTimer_Tick(object sender, EventArgs e)
         {
-            if (level.numero == 3)
+            if (level.numero == 4)
                 grille.vibrate();
             main.banniere.Content = "";
             test.Descendre(grille);

@@ -97,15 +97,18 @@ namespace Tetris
                     fill = new List<Color> { Colors.White }
                 };
             }
+
             if (level3.IsChecked == true)
             {
                 level = new Level()
                 {
                     backgroundimage = "",
                     numero = 3,
-                    backgroundcolor = Colors.Black,
-                    Couleurs = new List<Color>{ Colors.Red, Colors.Yellow, Colors.Orange, Colors.Magenta, Colors.Cyan, Colors.Purple, Colors.Green, Colors.Pink, Colors.Blue},
-                    decrement = 0,
+                    backgroundcolor = Colors.LightBlue,
+                    Couleurs = new List<Color>{ Colors.DarkSlateGray, Colors.DarkRed, Colors.Blue, Colors.Maroon, Colors.DeepSkyBlue,
+        Colors.DarkMagenta, Colors.Goldenrod, Colors.MediumTurquoise,Colors.MediumSlateBlue,
+        Colors.PowderBlue,Colors.SandyBrown,Colors.SaddleBrown,Colors.DeepSkyBlue},
+                    decrement = 1,
                     musique = @"",
                     timer = 100,
                     fill = new List<Color> { Colors.White }
@@ -119,6 +122,21 @@ namespace Tetris
                     backgroundimage = "",
                     numero = 4,
                     backgroundcolor = Colors.Black,
+                    Couleurs = new List<Color>{ Colors.Red, Colors.Yellow, Colors.Orange, Colors.Magenta, Colors.Cyan, Colors.Purple, Colors.Green, Colors.Pink, Colors.Blue},
+                    decrement = 0,
+                    musique = @"",
+                    timer = 100,
+                    fill = new List<Color> { Colors.White }
+                };
+            }
+
+            if (level5.IsChecked == true)
+            {
+                level = new Level()
+                {
+                    backgroundimage = "",
+                    numero = 5,
+                    backgroundcolor = Colors.Black,
                     Couleurs = new List<Color> {Colors.White},
                     decrement = 1,
                     musique = @"",
@@ -126,6 +144,7 @@ namespace Tetris
                     fill = new List<Color> { Colors.Red, Colors.Yellow, Colors.Orange, Colors.Magenta, Colors.Cyan, Colors.Purple, Colors.Green, Colors.Pink, Colors.Blue },
                 };
             }
+          
 
             menu.Visibility = Visibility.Collapsed;
             game = new Partie(main, level);

@@ -75,9 +75,9 @@ namespace Tetris
             {
                 if (this.tableau[i] != null)
                     tabRect[i].Fill = this.tableau[i].couleur;
-                else if(lvl.numero != 4)
+                else if(lvl.numero != 5)
                     tabRect[i].Fill = new SolidColorBrush(lvl.fill[r.Next(lvl.fill.Count)]);
-                else if(lvl.numero == 4 && tabRect[i].Fill.ToString() == Colors.Black.ToString() || tabRect[i].Fill.ToString() == Colors.White.ToString())
+                else if(lvl.numero == 5 && tabRect[i].Fill.ToString() == Colors.Black.ToString() || tabRect[i].Fill.ToString() == Colors.White.ToString())
                     tabRect[i].Fill = new SolidColorBrush(lvl.fill[r.Next(lvl.fill.Count)]);
                     
             }
