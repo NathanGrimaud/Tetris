@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
@@ -22,6 +23,9 @@ namespace Tetris
         {
             this.main = main;
             this.level = level;
+
+            Barre.Couleurs = level.Couleurs;
+            main.fenetre.Background = new SolidColorBrush(level.backgroundcolor);
 
             test = Barre.Create(); // Test est la barre qui sera en cours de placement 
             tabRect = new List<Rectangle>(180);

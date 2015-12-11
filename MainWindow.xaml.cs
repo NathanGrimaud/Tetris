@@ -32,9 +32,8 @@ namespace Tetris
             
             InitializeComponent();
 
-            
-            Level level2 = new Level();
-
+            fenetre.Background = new SolidColorBrush(Colors.LightBlue);
+ 
             main = this;
             
 
@@ -70,8 +69,12 @@ namespace Tetris
                 level = new Level()
                 {
                     backgroundimage = "",
-                    colors = "white",
-                    decrement = 0,
+                    backgroundcolor = Colors.LightBlue,
+                    Couleurs = new List<Color>()
+        { Colors.DarkSlateGray, Colors.DarkRed, Colors.Blue, Colors.Maroon, Colors.DeepSkyBlue,
+        Colors.DarkMagenta, Colors.Goldenrod, Colors.MediumTurquoise,Colors.MediumSlateBlue,
+        Colors.PowderBlue,Colors.SandyBrown,Colors.SaddleBrown,Colors.DeepSkyBlue},
+                decrement = 0,
                     musique = @"",
                     timer = 500,
                 };
@@ -81,13 +84,28 @@ namespace Tetris
                 level = new Level()
                 {
                     backgroundimage = "",
-                    colors = "white",
+                    backgroundcolor = Colors.LightBlue,
+                    Couleurs = new List<Color>{ Colors.DarkSlateGray, Colors.DarkRed, Colors.Blue, Colors.Maroon, Colors.DeepSkyBlue,
+        Colors.DarkMagenta, Colors.Goldenrod, Colors.MediumTurquoise,Colors.MediumSlateBlue,
+        Colors.PowderBlue,Colors.SandyBrown,Colors.SaddleBrown,Colors.DeepSkyBlue},
                     decrement = 0,
                     musique = @"",
                     timer = 100,
                 };
             }
-
+            if (level3.IsChecked == true)
+            {
+                level = new Level()
+                {
+                    backgroundimage = "",
+                    backgroundcolor = Colors.Black,
+                    Couleurs = new List<Color>{ Colors.Green},
+                    decrement = 0,
+                    musique = @"",
+                    timer = 200,
+                };
+            }
+            menu.Visibility = Visibility.Collapsed;
             game = new Partie(main, level);
         }
     }

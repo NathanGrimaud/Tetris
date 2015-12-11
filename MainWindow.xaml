@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Tetris"
         mc:Ignorable="d"
         Title="MainWindow" Height="480" Width="720" KeyDown="Window_KeyDown" >
-    <Grid Background="#FFE7F4FF">
+    <Grid x:Name="fenetre" Background="#FFE7F4FF">
         <Label x:Name="Timer" Content="Timer" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Canvas Name="gameGrid" HorizontalAlignment="Left" Height="391" Margin="55,30,0,0" VerticalAlignment="Top" Width="322"/>
         <Label x:Name="banniere" Content="" FontSize="200" Margin="540,365,4,18.5" RenderTransformOrigin="0.5,0.5">
@@ -25,10 +25,14 @@
                 </LinearGradientBrush>
             </Label.Foreground>
         </Label>
-        <TextBlock x:Name="select" HorizontalAlignment="Left" Margin="428,119,0,0" TextWrapping="Wrap" Text="Selectionner le niveau : " VerticalAlignment="Top" Height="38" Width="216" FontSize="18.667"/>
-        <Button x:Name="play" Content="PLAY ! " HorizontalAlignment="Left" Margin="428,243,0,0" VerticalAlignment="Top" Width="110" Height="34" FontSize="18.667" Click="play_Click"/>
-        <RadioButton x:Name="level1" Content="Niveau 1 " HorizontalAlignment="Left" Margin="453,157,0,0" VerticalAlignment="Top" IsChecked="True" GroupName="lvl"/>
-        <RadioButton x:Name="level2" Content="Niveau 2" HorizontalAlignment="Left" Margin="453,182,0,0" VerticalAlignment="Top" GroupName="lvl"/>
+        <StackPanel x:Name="menu"  Height="364" Margin="382,57,53,31.5" Width="280">
+            <TextBlock x:Name="select" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Selectionner le niveau : " VerticalAlignment="Top" Height="38" Width="216" FontSize="18.667"/>
+            <RadioButton x:Name="level1" Content="Niveau 1 " HorizontalAlignment="Left"  VerticalAlignment="Top" IsChecked="True" GroupName="lvl"/>
+            <RadioButton x:Name="level2" Content="Niveau 2" HorizontalAlignment="Left"  VerticalAlignment="Top" GroupName="lvl"/>
+            <RadioButton x:Name="level3" Content="A Cat" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Button x:Name="play" Content="PLAY ! " Margin="0"  Width="110" Height="34" FontSize="18.667" Click="play_Click"/>
+           
+        </StackPanel>
 
     </Grid>
 </Window>
