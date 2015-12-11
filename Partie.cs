@@ -5,6 +5,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using System.IO;
@@ -34,6 +35,11 @@ namespace Tetris
             this.enregistré = false;
             this.main = main;
             this.level = level;
+
+            Barre.Couleurs = level.Couleurs;
+            main.fenetre.Background = new SolidColorBrush(level.backgroundcolor);
+
+
             test = Barre.Create(); // Test est la barre qui sera en cours de placement 
             tabRect = new List<Rectangle>(180);
             main.banniere.Content = "GooOOoooo";

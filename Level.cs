@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace Tetris
 {
@@ -11,9 +12,10 @@ namespace Tetris
         public int decrement;
         public string musique;
         public string backgroundimage;
-        public string colors;
+        public List<Color> Couleurs;
         public int timer;
         public int numero;
+        public Color backgroundcolor;
     }
 
     

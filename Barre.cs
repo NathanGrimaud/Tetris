@@ -13,7 +13,7 @@ namespace Tetris
         public List<int> emplacement = new List<int>();
         public bool bloquer;
         public SolidColorBrush couleur;
-        protected static List<Color> Couleurs = new List<Color>()
+        public static List<Color> Couleurs = new List<Color>()
         { Colors.DarkSlateGray, Colors.DarkRed, Colors.Blue, Colors.Maroon, Colors.DeepSkyBlue,
         Colors.DarkMagenta, Colors.Goldenrod, Colors.MediumTurquoise,Colors.MediumSlateBlue,
         Colors.PowderBlue,Colors.SandyBrown,Colors.SaddleBrown,Colors.DeepSkyBlue};
@@ -25,7 +25,7 @@ namespace Tetris
         public static Barre Create()
         {
             var type = r.Next(7);
-            //////return new BarreLongue();
+            
 
             if (type == 0)
             {
