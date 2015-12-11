@@ -45,7 +45,7 @@ namespace Tetris
                 position = 0; 
             }
             // Vérification que le déménagement est correct
-            if (barre.EmplacementDispo(ref grille))
+            if (grille.EmplacementDispo(this))
             {
                 grille.write(ref b.emplacement, this);
 
